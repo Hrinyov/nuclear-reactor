@@ -29,7 +29,6 @@ router.beforeEach((to, from, next) => {
     next({ name: "login" });
   } else {
     next();
-    console.log('here')
   }
 });
 
