@@ -1,10 +1,17 @@
 <script setup lang="ts">
+import Gen from "./modules/ColorGen.vue";
 </script>
 
 <template>
-  <main>
-    <pre>{{ $store.state.user }}</pre>
-    <pre>{{ $store.getters.isLoggedIn }}</pre>
-    <RouterLink to="/login">Login</RouterLink>
-  </main>
+   <div class="home">
+    <h1>This is an home page</h1>
+  </div>
+  <div>
+<Gen />
+  </div>
 </template>
+<style>
+.home {
+  margin-bottom: 20px;
+}
+</style>
