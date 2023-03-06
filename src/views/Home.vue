@@ -1,7 +1,5 @@
 <template>
   <main>
-    <pre>{{ $store.state.user }}</pre>
-    <pre>{{ $store.getters.isLoggedIn }}</pre>
     <button @click="logout">Logout</button>
   </main>
 </template>
@@ -23,8 +21,6 @@
     },
     mounted() {
       const { user } = useAuth0();
-
-      console.log('USER', user)
 
       this.$store.dispatch('login', user)
     }
