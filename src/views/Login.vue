@@ -1,39 +1,42 @@
-<template>
-    <div class="login-container">
-      <h1 class="login-title">Login</h1>
-      <form class="login-form" @submit.prevent="login">
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" v-model="email" required>
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" v-model="password" required>
-        </div>
-        <button class="btn login-btn">Login</button>
-      </form>
-    </div>
-  </template>
-  
-  <script>
+<script lang="ts">
+  import { useAuth0 } from '@auth0/auth0-vue';
+
   export default {
-    data() {
+    data () {
       return {
-        email: '',
-        password: ''
-      };
+        message: ""
+      }
     },
-    methods: {
-      async login() {
-        await this.$store.dispatch('login', {
-          email: this.email,
-          password: this.password,
-        })
-        this.$router.push({ name: 'home' })
-      },
+    setup() {
+      const { loginWithRedirect, logout } = useAuth0();
+      return {
+        login: () => {
+          loginWithRedirect({
+            appState: {
+              target: "/",
+            },
+          });
+        },
+        logout: () => {
+          logout({
+            logoutParams: {
+                returnTo: window.location.origin,
+            }
+          })
+        },
+      }
     },
-  };
+  }
   </script>
+
+<template>
+  <div class="login-container">
+    <h1 class="login-title">Login</h1>
+    <form class="login-form" @submit.prevent="login">
+      <button class="btn login-btn" @click="login">Login</button>
+    </form>
+  </div>
+</template>
   
   <style>
   .login-container {

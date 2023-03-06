@@ -1,7 +1,9 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
-import Login from '../views/Login.vue'
-import store from '../store/index'
+import { createRouter, createWebHistory } from 'vue-router';
+import Home from '../views/Home.vue';
+import Login from '../views/Login.vue';
+import store from '../store/index';
+import { authGuard } from "@auth0/auth0-vue";
+
 
 const router = createRouter({
   history: createWebHistory(),
@@ -10,7 +12,7 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: Home,
-      meta: { requiresAuth: true }
+      beforeEnter: authGuard
     },
     {
       path: '/login',
@@ -20,16 +22,5 @@ const router = createRouter({
   ]
 })
 
-router.beforeEach((to, from, next) => {
-  if (to.meta.requiresAuth) {
-    if (store.getters.isLoggedIn) {
-      next();
-      return;
-    }
-    next({ name: "login" });
-  } else {
-    next();
-  }
-});
 
 export default router
