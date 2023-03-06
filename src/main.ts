@@ -11,9 +11,9 @@ const app = createApp(App);
 app.use(
     createAuth0({
       // set here domain from Auth0
-        domain: "" as string,
+        domain: import.meta.env.VITE_AUTH0_DOMAIN as string,
         // set here clientId from Auth0
-        clientId: "" as string,
+        clientId: import.meta.env.VITE_AUTH0_CLIENT_ID as string,
         authorizationParams: {
           redirect_uri: window.location.origin,
         },

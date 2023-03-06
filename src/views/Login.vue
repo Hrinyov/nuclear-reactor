@@ -11,11 +11,7 @@
       const { loginWithRedirect, logout } = useAuth0();
       return {
         login: () => {
-          loginWithRedirect({
-            appState: {
-              target: "/",
-            },
-          });
+          loginWithRedirect();
         },
         logout: () => {
           logout({
