@@ -1,17 +1,29 @@
-<script setup lang="ts">
-import Gen from "./modules/ColorGen.vue";
+<template>
+  <main>
+    <button @click="logout">Logout</button>
+  </main>
+</template>
+
+<script lang="ts">
+  import { useAuth0 } from '@auth0/auth0-vue';
+
+  export default {
+    setup() {
+      const { logout, loginWithRedirect, user, isAuthenticated } = useAuth0();
+      return {
+        logout: () => {
+          logout();
+          this.$router.push({ path: '/login' });
+        },
+        user,
+        isAuthenticated
+      };
+    },
+    mounted() {
+      const { user } = useAuth0();
+
+      this.$store.dispatch('login', user)
+    }
+  };
 </script>
 
-<template>
-   <div class="home">
-    <h1>This is an home page</h1>
-  </div>
-  <div>
-<Gen />
-  </div>
-</template>
-<style>
-.home {
-  margin-bottom: 20px;
-}
-</style>

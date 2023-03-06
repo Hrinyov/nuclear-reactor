@@ -1,22 +1,22 @@
 <template>
   <div class="user-profile">
     <div class="user-info">
-      <img :src="user.avatar" alt="Profile picture" />
-      <h2>{{ user.name }}</h2>
-      <p>{{ user.email }}</p>
+      <!-- <img :src="user.avatar" alt="Profile picture" /> -->
+      <h2>{{` name: ${$store.state.user.given_name} `}}</h2>
+      <!-- <p>{{ user.email }}</p> -->
     </div>
     <div class="user-stats">
       <div class="stat">
         <div class="stat-name">Posts</div>
-        <div class="stat-value">{{ user.posts }}</div>
+        <!-- <div class="stat-value">{{ user.posts }}</div> -->
       </div>
       <div class="stat">
         <div class="stat-name">Followers</div>
-        <div class="stat-value">{{ user.followers }}</div>
+        <!-- <div class="stat-value">{{ user.followers }}</div> -->
       </div>
       <div class="stat">
         <div class="stat-name">Following</div>
-        <div class="stat-value">{{ user.following }}</div>
+        <!-- <div class="stat-value">{{ user.following }}</div> -->
       </div>
     </div>
   </div>

@@ -1,10 +1,11 @@
-import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
-import Login from "../views/Login.vue";
-import store from "../store/index";
+import { createRouter, createWebHistory } from 'vue-router';
+import Home from '../views/Home.vue';
+import Login from '../views/Login.vue';
 import AboutViewVue from "@/views/AboutView.vue";
 import Profile from "../views/Profile.vue";
 import Contact from "../views/Contact.vue";
+import { authGuard } from "@auth0/auth0-vue";
+
 
 const router = createRouter({
   history: createWebHistory(),
@@ -13,7 +14,7 @@ const router = createRouter({
       path: "/",
       name: "home",
       component: Home,
-      meta: { requiresAuth: true },
+      beforeEnter: authGuard
     },
     {
       path: "/login",
@@ -24,33 +25,22 @@ const router = createRouter({
       path: "/about",
       name: "about",
       component: AboutViewVue,
-      meta: { requiresAuth: true },
+      beforeEnter: authGuard
     },
     {
       path: "/profile",
       name: "profile",
       component: Profile,
-      meta: { requiresAuth: true },
+      beforeEnter: authGuard
     },
     {
       path: "/contact",
       name: "contact",
       component: Contact,
-      meta: { requiresAuth: true },
+      beforeEnter: authGuard
     },
   ],
 });
 
-router.beforeEach((to, from, next) => {
-  if (to.meta.requiresAuth) {
-    if (store.getters.isLoggedIn) {
-      next();
-      return;
-    }
-    next({ name: "login" });
-  } else {
-    next();
-  }
-});
 
 export default router;

@@ -7,9 +7,11 @@ import { RouterLink, RouterView } from "vue-router";
 <template>
   <header>
     <div class="wrapper">
-      <NavBar />
-      <Sidebar />
-      <RouterView />
+      <div v-if="$store.state.user">
+        <NavBar />
+        <Sidebar />
+      </div>
+      <RouterView/>
     </div>
   </header>
 </template>
