@@ -1,5 +1,3 @@
-# .
-
 ## NR Project (Nuclear Reactor) 🚀
 
 This project started developing with Vue 3 in Vite.
