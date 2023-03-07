@@ -4,7 +4,7 @@ This project started developing with Vue 3 in Vite.
 
 Project Description... ( In Progress )
 
-## Project Setup ( Do after each updates )
+## Project Setup ( Do after each updates in package.json )
 
 ```sh
 npm install
