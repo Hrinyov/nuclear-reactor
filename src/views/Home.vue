@@ -1,6 +1,7 @@
 <template>
   <main>
     <button @click="logout">Logout</button>
+    <!-- <pre>{{ $store.state.user }}</pre> -->
   </main>
 </template>
 
