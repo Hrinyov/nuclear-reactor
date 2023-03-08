@@ -1,4 +1,10 @@
-import { createStore } from 'vuex'
+import { createStore,Store } from 'vuex'
+
+declare module '@vue/runtime-core' {
+    interface ComponentCustomProperties {
+      $store: Store<any>;
+    }
+  }
 
 export default createStore({
     state: {
