@@ -14,7 +14,7 @@
       return {
         logout: () => {
           logout();
-          (this as any).$router.push({ path: '/login' });
+           (this as any).$router.push({ path: '/login' });
         },
         user,
         isAuthenticated
