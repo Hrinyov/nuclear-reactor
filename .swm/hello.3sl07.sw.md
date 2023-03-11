@@ -5,7 +5,27 @@ file_version: 1.1.2
 app_version: 1.3.8
 ---
 
-Some test text
+Some test text<br/>
+Add some example<br/>
+
+<br/>
+
+Log in/out set up
+<!-- NOTE-swimm-snippet: the lines below link your snippet to Swimm -->
+### 📄 src/views/Login.vue
+```vue
+13             login: () => {
+14               loginWithRedirect();
+15             },
+16             logout: () => {
+17               logout({
+18                 logoutParams: {
+19                     returnTo: window.location.origin,
+20                 }
+21               })
+22             },
+23           }
+```
 
 <br/>
 
