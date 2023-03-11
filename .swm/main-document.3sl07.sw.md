@@ -1,6 +1,6 @@
 ---
 id: 3sl07
-title: Hello
+title: Main document
 file_version: 1.1.2
 app_version: 1.3.8
 ---
