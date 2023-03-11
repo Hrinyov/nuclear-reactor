@@ -2,7 +2,7 @@
   <div class="user-profile">
     <div class="user-info">
       <!-- <img :src="user.avatar" alt="Profile picture" /> -->
-      <h2>{{` name: ${$store.state.user.given_name} `}}</h2>
+      <h2>{{ ` name: ${$store.state.user.nickname} ` }}</h2>
       <!-- <p>{{ user.email }}</p> -->
     </div>
     <div class="user-stats">
