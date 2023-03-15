@@ -6,12 +6,12 @@ import { RouterLink, RouterView } from "vue-router";
 
 <template>
   <header>
-    <div class="wrapper">
-      <div v-if="$store.state.user">
+    <div v-if="$store.state.user">
         <NavBar />
         <Sidebar />
       </div>
-      <RouterView/>
-    </div>
   </header>
+    <div class="wrapper">
+        <RouterView/>
+    </div>
 </template>

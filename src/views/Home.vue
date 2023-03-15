@@ -1,6 +1,5 @@
 <template>
   <main>
-    <button @click="logout">Logout</button>
     <!-- <pre>{{ $store.state.user }}</pre> -->
   </main>
 </template>
@@ -9,17 +8,6 @@
   import { useAuth0 } from '@auth0/auth0-vue';
 
   export default {
-    setup() {
-      const { logout, loginWithRedirect, user, isAuthenticated } = useAuth0();
-      return {
-        logout: () => {
-          logout();
-           (this as any).$router.push({ path: '/login' });
-        },
-        user,
-        isAuthenticated
-      };
-    },
     mounted() {
       const { user } = useAuth0();
 
