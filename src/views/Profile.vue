@@ -1,7 +1,7 @@
 <template>
   <div class="user-profile">
     <div class="user-info">
-      <!-- <img :src="user.avatar" alt="Profile picture" /> -->
+      <img :src="$store.state.user.picture" alt="Profile picture" />
       <h2>{{` name: ${$store.state.user?.nickname} `}}</h2>
       <!-- <p>{{ user.email }}</p> -->
     </div>
@@ -28,16 +28,14 @@
 
 export default {
   setup() {
-      const { logout, loginWithRedirect, user, isAuthenticated } = useAuth0();
+      const { logout } = useAuth0();
       return {
         logout: () => {
           logout();
            (this as any).$router.push({ path: '/' });
         },
-        user,
-        isAuthenticated
       };
-    },
+    }
 };
 </script>
 
