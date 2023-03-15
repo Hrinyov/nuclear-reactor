@@ -1,8 +1,8 @@
 <template>
   <div class="user-profile">
     <div class="user-info">
-      <!-- <img :src="user.avatar" alt="Profile picture" /> -->
-      <h2>{{ ` name: ${$store.state.user.nickname} ` }}</h2>
+      <img :src="$store.state.user.picture" alt="Profile picture" />
+      <h2>{{` name: ${$store.state.user?.nickname} `}}</h2>
       <!-- <p>{{ user.email }}</p> -->
     </div>
     <div class="user-stats">
@@ -19,21 +19,31 @@
         <!-- <div class="stat-value">{{ user.following }}</div> -->
       </div>
     </div>
+    <button @click="logout">Logout</button>
   </div>
 </template>
 
-<script>
+<script lang="ts">
+  import { useAuth0 } from '@auth0/auth0-vue';
+
 export default {
-  props: {
-    user: {
-      type: Object,
-      required: true,
-    },
-  },
+  setup() {
+      const { logout } = useAuth0();
+      return {
+        logout: () => {
+          logout();
+           (this as any).$router.push({ path: '/' });
+        },
+      };
+    }
 };
 </script>
 
-<!-- <style scoped>
+<style>
+
+h2{
+  color: #cccccc;
+}
 .user-profile {
   display: flex;
   flex-direction: column;
@@ -75,4 +85,4 @@ export default {
 .stat-value {
   font-size: 1.5rem;
 }
-</style> -->
+</style>

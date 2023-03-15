@@ -30,9 +30,10 @@ export default{
 
 <style>
 nav {
-  background-color: #333;
-  color: #fff;
-  display: inline;
+  color: #4B1AD3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 ul {
@@ -48,18 +49,18 @@ li {
 
 li a {
   display: block;
-  color: white;
+  color: #4B1AD3;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
 }
 
 li a:hover {
-  background-color: #111;
+  background-color: rgb(231, 208, 255);
 }
 
 .sidebar_logo_items {
-background-color: whitesmoke;
+background-color:#4B1AD3;
 height: 2px;
 width: 25px;
 margin: 5px;
@@ -71,7 +72,7 @@ margin: 5px;
 }
 
 .sidebar_logo:hover {
-  background-color: #111;
+  background-color: rgb(231, 208, 255);
 }
 
 </style>
