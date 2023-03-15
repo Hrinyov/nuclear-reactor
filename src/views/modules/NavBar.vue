@@ -1,10 +1,15 @@
 <template>
   <nav>
     <ul>
-      <li><router-link to="/">Home</router-link></li>
-      <li><router-link to="/about">About</router-link></li>
-      <li><router-link to="/contact">Contact</router-link></li>
-      <li><router-link to="/profile">Profile</router-link></li>
+      <li 
+        v-for="item in items" 
+        :key="item.id" 
+        :class="{ active: item.id === activeItemId }" 
+      >
+        <router-link :to="item.link">
+          {{ item.text }}
+        </router-link>
+      </li>
       <li @click="">
         <div class="sidebar_logo">
           <div class="sidebar_logo_items"></div>
@@ -14,18 +19,34 @@
       </li>
     </ul>
   </nav>
-  <div>
-        <Sidebar />
-      </div>
 </template>
 
 <script>
 import  Sidebar  from "./Sidebar.vue";
-export default{
-  component: {
-    Sidebar
+import { defineComponent, reactive } from 'vue';
+
+export default defineComponent({
+  setup() {
+    const state = reactive({
+      activeItemId: null,
+      items: [
+        { id: 1, text: 'Home', link: '/' },
+        { id: 2, text: 'About', link: '/about' },
+        { id: 3, text: 'Contact', link: '/contact' },
+        { id: 4, text: 'Profile', link: '/profile' }
+      ]
+    });
+
+    const handleClickItem = (itemId) => {
+      state.activeItemId = itemId; 
+    };
+
+    return {
+      ...state,
+      handleClickItem
+    }
   }
-}
+})
 </script>
 
 <style>
