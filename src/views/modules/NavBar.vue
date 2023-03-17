@@ -11,18 +11,18 @@
         </router-link>
       </li>
       <li>
-        <Logo @click="$emit('toggle')" />
+        <BurgerMenuButton @click="$emit('toggle')" />
       </li>
     </ul>
   </nav>
 </template>
 
 <script>
-import Logo from "./SidebarLogo.vue";
+import BurgerMenuButton from "./BurgerMenuButton.vue";
 import { defineComponent, reactive } from "vue";
 export default defineComponent({
   components: {
-    Logo,
+    BurgerMenuButton,
   },
   setup() {
     const state = reactive({
