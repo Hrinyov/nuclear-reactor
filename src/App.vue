@@ -7,24 +7,35 @@ import { RouterLink, RouterView } from "vue-router";
 <template>
   <header>
     <div v-if="$store.state.user">
-        <NavBar />
-        <Sidebar />
-      </div>
-  </header>
-    <div class="wrapper">
-        <RouterView/>
+      <NavBar @toggle="toggleSidebar" />
     </div>
+    <div v-show="sidebarOpen">
+      <Sidebar />
+    </div>
+  </header>
+  <div class="wrapper">
+    <RouterView />
+  </div>
 </template>
 
 <script lang="ts">
-import { useAuth0 } from '@auth0/auth0-vue';
+import { useAuth0 } from "@auth0/auth0-vue";
 
 export default {
-  
-    mounted() {
-      const { user } = useAuth0();
+  mounted() {
+    const { user } = useAuth0();
 
-      this.$store.dispatch('login', user)
-    }
+    this.$store.dispatch("login", user);
+  },
+  data() {
+    return {
+      sidebarOpen: false,
+    };
+  },
+  methods: {
+    toggleSidebar() {
+      this.sidebarOpen = !this.sidebarOpen;
+    },
+  },
 };
 </script>
