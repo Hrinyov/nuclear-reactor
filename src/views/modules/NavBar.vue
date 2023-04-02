@@ -11,7 +11,7 @@
         </router-link>
       </li>
       <li>
-        <BurgerMenuButton @click="$emit('toggle')" />
+        <BurgerMenuButton @click="$emit('toggle')" @click.stop />
       </li>
     </ul>
   </nav>
