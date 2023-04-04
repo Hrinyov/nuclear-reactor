@@ -9,7 +9,7 @@ import { RouterLink, RouterView } from "vue-router";
     <div v-if="$store.state.user">
       <NavBar @toggle="toggleSidebar" />
     </div>
-    <div v-show="sidebarOpen">
+    <div v-show="sidebarOpen" @click.stop>
       <Sidebar />
     </div>
   </header>
@@ -26,6 +26,11 @@ export default {
     const { user } = useAuth0();
 
     this.$store.dispatch("login", user);
+
+    window.addEventListener("click", this.ClickOutside);
+  },
+  beforeUnmount() {
+    window.removeEventListener("click", this.ClickOutside);
   },
   data() {
     return {
@@ -35,6 +40,11 @@ export default {
   methods: {
     toggleSidebar() {
       this.sidebarOpen = !this.sidebarOpen;
+    },
+    ClickOutside() {
+      if (this.sidebarOpen) {
+        this.sidebarOpen = false;
+      }
     },
   },
 };
